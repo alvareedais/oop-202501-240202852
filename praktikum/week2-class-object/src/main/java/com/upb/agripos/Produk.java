@@ -5,7 +5,7 @@ public class Produk {
     private String nama;
     private double harga;
     private int stok;
-
+    
     public Produk(String kode, String nama, double harga, int stok) {
         this.kode = kode;
         this.nama = nama;

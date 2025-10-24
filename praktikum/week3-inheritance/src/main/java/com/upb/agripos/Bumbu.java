@@ -1,14 +1,16 @@
 package main.java.com.upb.agripos;
 
-public class Bumbu {
-        private String varietas;
 
-    public Benih(String kode, String nama, double harga, int stok, String varietas) {
+public class Bumbu extends Produk {
+    private String jenis;
+
+    public Bumbu(String kode, String nama, double harga, int stok, String jenis) {
         super(kode, nama, harga, stok);
-        this.varietas = varietas;
+        this.jenis = jenis;
     }
 
-    public String getVarietas() { return varietas; }
-    public void setVarietas(String varietas) { this.varietas = varietas; }
+    public String getJenis() { return jenis; }
+
+   
 }
-}
+      
