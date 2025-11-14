@@ -2,7 +2,7 @@ class Mahasiswa {
    String nama;
    int nim;
    Mahasiswa(String n, int u) { nama = n; nim = u; }
-   void sapa(){ System.out.println("Hello world, i'm " + nama+ " - " + nim);}
+   void sapa(){ System.out.println("Hai, i'm " + nama+ " - " + nim);}
 }
 
 public class HelloOOP {

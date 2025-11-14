@@ -4,6 +4,6 @@ public  class HelloProsedural {
       String nim = "240202852";
       String nama = "Alvirdaus Permathasyahidatama Abadi";
       
-      System.out.println("Hello world, i'm " + nama+ " - " + nim);
+      System.out.println("Hai, i'm " + nama+ " - " + nim);
    }
 }
