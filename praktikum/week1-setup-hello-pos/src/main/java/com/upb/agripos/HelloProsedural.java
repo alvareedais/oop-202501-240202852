@@ -1,9 +1,10 @@
 public  class HelloProsedural {
 
     public static void main(String[] args) {
+      String nama = "alvareedais";     // Alvirdaus Permathasyahidatama Abadi
       String nim = "240202852";
-      String nama = "Alvirdaus Permathasyahidatama Abadi";
       
-      System.out.println("Hai, i'm " + nama+ " - " + nim);
+      
+      System.out.println("Hello World, I am " + nama+ "-" + nim);
    }
 }
