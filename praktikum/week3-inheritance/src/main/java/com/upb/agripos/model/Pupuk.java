@@ -8,12 +8,9 @@ public class Pupuk extends Produk {
         this.jenis = jenis;
     }
 
-    public String getJenis() { return jenis; }
-    public void setJenis(String jenis) { this.jenis = jenis; }
-
-    @Override
-    public void tampilkanInfo() {
-        super.tampilkanInfo();
-        System.out.println("Jenis Pupuk: " + jenis);
+    public void deskripsi() {
+        System.out.println("Kode: " + kode + " | Nama: " + nama + 
+            " | Harga: Rp" + harga + " | Stok: " + stok + 
+            " | Jenis: " + jenis);
     }
 }

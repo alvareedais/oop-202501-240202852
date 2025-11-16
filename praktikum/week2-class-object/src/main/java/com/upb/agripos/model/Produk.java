@@ -1,11 +1,11 @@
-package main.java.com.upb.agripos;
+package main.java.com.upb.agripos.model;
 
 public class Produk {
     private String kode;
     private String nama;
     private double harga;
     private int stok;
-    
+
     public Produk(String kode, String nama, double harga, int stok) {
         this.kode = kode;
         this.nama = nama;
@@ -26,14 +26,21 @@ public class Produk {
     public void setStok(int stok) { this.stok = stok; }
 
     public void tambahStok(int jumlah) {
-        this.stok += jumlah;
+        stok += jumlah;
+        System.out.println("Berhasil menambah stok " + jumlah + " unit. Stok sekarang: " + stok);
     }
 
     public void kurangiStok(int jumlah) {
-        if (this.stok >= jumlah) {
-            this.stok -= jumlah;
+        if (stok >= jumlah) {
+            stok -= jumlah;
+            System.out.println("Berhasil mengurangi stok " + jumlah + " unit. Stok sekarang: " + stok);
         } else {
-            System.out.println("Stok tidak mencukupi!");
+            System.out.println("Stok tidak cukup! Tidak bisa mengurangi " + jumlah + " unit.");
         }
+    }
+
+    public void tampilkanInfo() {
+        System.out.println("Kode: " + kode + ", Nama: " + nama +
+                ", Harga: " + harga + ", Stok: " + stok);
     }
 }

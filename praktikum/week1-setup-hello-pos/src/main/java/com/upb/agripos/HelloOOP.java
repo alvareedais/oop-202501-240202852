@@ -1,20 +1,18 @@
-class Person {
+class Mahasiswa {
     String nama;
-    String nim;
-
-    Person(String nama, String nim) {
-        this.nama = nama;
-        this.nim = nim;
+    int nim;
+    Mahasiswa(String n, int u) {
+        nama = n;
+        nim = u;
     }
-
-    void sayHello() {
-        System.out.println("Hello World, I am " + nama + "-" + nim);
+    void sapa() {
+        System.out.println("Halo world i am, " + nama + " - " + nim);
     }
 }
 
 public class HelloOOP {
     public static void main(String[] args) {
-        Person p = new Person("alvareedais", "240202852");  // Alvirdaus Permathasyahidatama Abadi
-        p.sayHello();
+        Mahasiswa m = new Mahasiswa("Alvirdaus Permathasyahidatama Abadi", 240202852);
+        m.sapa();
     }
 }
