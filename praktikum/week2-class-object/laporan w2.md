@@ -14,6 +14,7 @@ Topik: Class dan Object
 - Mahasiswa mampu mengimplementasikan class Produk dengan atribut dan method yang sesuai.
 - Mahasiswa mampu mendemonstrasikan instansiasi object serta menampilkan data produk di console.
 
+
 ## Dasar Teori
 1. Mahasiswa mampu menjelaskan konsep class, object, atribut, dan method dalam OOP.
 

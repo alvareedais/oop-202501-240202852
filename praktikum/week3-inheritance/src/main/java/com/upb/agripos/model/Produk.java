@@ -29,4 +29,5 @@ public class Produk {
         System.out.println("Kode: " + kode + " | Nama: " + nama +
             " | Harga: Rp" + harga + " | Stok: " + stok);
     }
+    
 }

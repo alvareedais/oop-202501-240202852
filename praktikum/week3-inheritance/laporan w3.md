@@ -15,6 +15,7 @@ Topik: Inheritance
 - Mahasiswa mampu menggunakan super untuk memanggil konstruktor dan method parent class.
 - Mahasiswa mampu membuat laporan praktikum yang menjelaskan perbedaan penggunaan inheritance dibanding class tunggal.
 
+
 ---
 
 ## Dasar Teori

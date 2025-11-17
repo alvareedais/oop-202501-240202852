@@ -12,4 +12,5 @@ public class AlatPertanian extends Produk {
     public String getInfo() {
         return "Alat Pertanian: " + super.getInfo() + ", Bahan: " + bahan;
     }
+    
 }

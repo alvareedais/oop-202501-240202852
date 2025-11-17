@@ -13,4 +13,5 @@ public class AlatPertanian extends Produk {
             " | Harga: Rp" + harga + " | Stok: " + stok + 
             " | Material: " + material);
     }
+    
 }

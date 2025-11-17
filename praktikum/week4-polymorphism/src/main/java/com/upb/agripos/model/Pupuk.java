@@ -12,4 +12,5 @@ public class Pupuk extends Produk {
     public String getInfo() {
         return "Pupuk: " + super.getInfo() + ", Jenis: " + jenis;
     }
+    
 }

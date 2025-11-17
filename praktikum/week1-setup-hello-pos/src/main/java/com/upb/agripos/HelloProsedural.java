@@ -5,6 +5,7 @@ public class HelloProsedural {
         String NIM = "240202852";
 
         System.out.println("Hello world, i am " + nama + " - " + NIM);
+        
     }
 
 }

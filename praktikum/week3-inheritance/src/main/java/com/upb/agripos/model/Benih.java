@@ -13,4 +13,5 @@ public class Benih extends Produk {
             " | Harga: Rp" + harga + " | Stok: " + stok + 
             " | Varietas: " + varietas);
     }
+    
 }

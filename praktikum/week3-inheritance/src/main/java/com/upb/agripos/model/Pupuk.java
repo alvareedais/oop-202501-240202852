@@ -13,4 +13,5 @@ public class Pupuk extends Produk {
             " | Harga: Rp" + harga + " | Stok: " + stok + 
             " | Jenis: " + jenis);
     }
+    
 }

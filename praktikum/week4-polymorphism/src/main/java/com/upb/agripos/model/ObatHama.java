@@ -12,4 +12,5 @@ public class ObatHama extends Produk {
     public String getInfo() {
         return "ObatHama  : " + super.getInfo() + ", Target: " + targetHama;
     }
+    
 } 

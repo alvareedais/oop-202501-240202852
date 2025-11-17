@@ -43,4 +43,5 @@ public class Produk {
     public String getInfo() {
         return "Produk: " + nama + " (Kode: " + kode + ")";
     }
+    
 }

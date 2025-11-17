@@ -12,4 +12,5 @@ public class Benih extends Produk {
     public String getInfo() {
         return "Benih: " + super.getInfo() + ", Varietas: " + varietas;
     }
+    
 }

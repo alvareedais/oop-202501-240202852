@@ -15,4 +15,5 @@ public class HelloOOP {
         Mahasiswa m = new Mahasiswa("Alvirdaus Permathasyahidatama Abadi", 240202852);
         m.sapa();
     }
+    
 }

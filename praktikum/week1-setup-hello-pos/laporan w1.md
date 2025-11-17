@@ -11,6 +11,7 @@ Topik: tugas 1 membuat hello world
 ## Tujuan
 Mahasiswa memahami perbedaan antara paradigma prosedural, fungsional, dan berorientasi objek (OOP).
 
+
 ---
 
 ## Dasar Teori 

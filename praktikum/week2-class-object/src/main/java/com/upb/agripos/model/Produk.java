@@ -43,4 +43,5 @@ public class Produk {
         System.out.println("Kode: " + kode + ", Nama: " + nama +
                 ", Harga: " + harga + ", Stok: " + stok);
     }
+    
 }
