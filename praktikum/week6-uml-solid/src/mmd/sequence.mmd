@@ -1,0 +1,20 @@
+sequenceDiagram
+    actor K as Kasir
+    participant UI as UI_Checkout
+    participant S as CheckoutService
+    participant DB as Database
+
+    K->>UI: Konfirmasi Bayar
+    UI->>S: validateAndProcess()
+    S->>DB: lockStock(productId)
+    alt Stok Tidak Mencukupi
+        DB-->>S: error(stok_habis)
+        S-->>UI: return alert("Barang baru saja terjual!")
+        UI-->>K: Tampilkan pesan merah/gagal
+    else Stok Aman
+        S->>DB: reduceStock()
+        S->>DB: createInvoice()
+        DB-->>S: status_ok
+        S-->>UI: return success_receipt
+        UI-->>K: Cetak Struk Otomatis
+    end

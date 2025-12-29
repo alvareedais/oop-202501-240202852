@@ -263,4 +263,8 @@ Class Diagram:
 * Freeman, E. (2020). *Head First Design Patterns* (Bab 1–3).
 * Gamma, E. et al. (2018). *Design Patterns: Elements of Reusable Object-Oriented Software*.
 * Robert C. Martin. *SOLID Principles*.
+<<<<<<< HEAD
 * Object Management Group (OMG). *UML Specification*.
+=======
+* Object Management Group (OMG). *UML Specification*.
+>>>>>>> 7f6c2c4a40774b8f52276d8e629cec01ac6084c6

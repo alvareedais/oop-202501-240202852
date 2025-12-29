@@ -1,0 +1,22 @@
+---
+config:
+  layout: elk
+---
+flowchart TD
+    A1[Kasir] --> A2[Scan Produk]
+    A2 --> A3[Metode?]
+    A3 --> B1[Tunai]
+    B1 --> B2[Input nominal]
+    B2 --> B3{Cukup?}
+    B3 -->|Ya| B4[Proses Pembayaran]
+    B3 -->|Tidak| B5[Tidak & Minta Ulang]
+    B5 --> B2
+    A3 --> C1[E-Wallet]
+    C1 --> C2[Permintaan ke Payment Gateway]
+    C2 --> C3{Saldo Cukup?}
+    C3 -->|Ya| B4
+    C3 -->|Tidak| C4[Gagal & Kembali]
+    C4 --> A3
+    B4 --> D1{Otorisasi Berhasil?}
+    D1 -->|Ya| D2[Cetak Struk]
+    D1 -->|Tidak| C4

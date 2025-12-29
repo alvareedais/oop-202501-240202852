@@ -13,7 +13,7 @@ public class MainInheritance {
 
         System.out.println("=== Data Produk Pertanian ===");
         b.deskripsi();
-        p.deskripsi();
+        p.deskripsi(); 
         a.deskripsi();
 
         System.out.println("\n=== Menambah Stok Produk ===");

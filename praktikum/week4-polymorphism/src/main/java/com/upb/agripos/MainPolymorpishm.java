@@ -21,7 +21,7 @@ public class MainPolymorpishm {
 
         for (Produk p : daftarProduk) {
             System.out.println(p.getInfo());
-        }
+        } 
 
         System.out.println("\n=== Demonstrasi Overloading tambahStok ===");
         Produk produkTes = daftarProduk[0]; 

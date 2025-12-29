@@ -16,7 +16,7 @@ public class MainProduk {
         System.out.println("Kode: " + p2.getKode() + ", Nama: " + p2.getNama() + ", Harga: " + p2.getHarga() + ", Stok: " + p2.getStok());
         System.out.println("Kode: " + p3.getKode() + ", Nama: " + p3.getNama() + ", Harga: " + p3.getHarga() + ", Stok: " + p3.getStok());
         System.out.println("Kode: " + p4.getKode() + ", Nama: " + p4.getNama() + ", Harga: " + p4.getHarga() + ", Stok: " + p4.getStok());
-
+ 
         // === Perubahan stok (masih meniru pola Wahyu) ===
         System.out.println("Perubahan Stok");
         p1.tambahStok(30);

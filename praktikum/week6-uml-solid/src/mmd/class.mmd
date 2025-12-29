@@ -1,0 +1,28 @@
+classDiagram
+    class TransactionService {
+        -IProductRepository productRepo
+        -IPaymentProcessor paymentProcessor
+        -IDiscountStrategy discountStrategy
+        +executeCheckout(Cart cart)
+    }
+
+    class IDiscountStrategy {
+        <<interface>>
+        +calculateDiscount(double total) double
+    }
+    class SeasonalDiscount { +calculateDiscount(double total) }
+    class MemberDiscount { +calculateDiscount(double total) }
+
+    class IPaymentProcessor {
+        <<interface>>
+        +pay(double amount) bool
+    }
+    class MidtransGateway { +pay(double amount) }
+    class CashHandler { +pay(double amount) }
+
+    TransactionService --> IDiscountStrategy : OCP (Mudah tambah diskon)
+    TransactionService --> IPaymentProcessor : DIP (Tidak tergantung vendor)
+    IDiscountStrategy <|.. SeasonalDiscount
+    IDiscountStrategy <|.. MemberDiscount
+    IPaymentProcessor <|.. MidtransGateway
+    IPaymentProcessor <|.. CashHandler

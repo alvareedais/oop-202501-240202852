@@ -9,5 +9,5 @@ public class HelloFunctional {
         sapa.accept("Alvirdaus Permathasyahidatama Abadi", 240202852);
 
     }
-    
+
 }
