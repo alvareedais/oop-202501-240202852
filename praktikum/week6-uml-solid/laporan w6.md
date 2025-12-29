@@ -1,10 +1,10 @@
 # Laporan Praktikum Minggu 6  
 Topik: UML & SOLID  
 
-## Identitas  
-- Nama  : Hilda Sava Alzena  
-- NIM   : 240202865  
-- Kelas : 3 IKRA  
+## Identitas
+- Nama  : Alvirdaus Permathasyahidatama Abadi
+- NIM   : 240202852
+- Kelas : 3IKRA 
 
 ---
 
