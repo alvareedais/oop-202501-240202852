@@ -1,5 +1,5 @@
 package main.java.com.upb.agripos;
 
-public class InsufficientStockException {
-    
+public class InsufficientStockException extends Exception{
+    public InsufficientStockException(String msg) { super(msg); }
 }
