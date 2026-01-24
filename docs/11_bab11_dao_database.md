@@ -284,7 +284,7 @@ Pengumpulan wajib menyertakan:
 | Laporan & dokumentasi         | 20%   |
 | Total                         | 100%  |
 
----
+--- 
 
 ## Checklist Keberhasilan
 

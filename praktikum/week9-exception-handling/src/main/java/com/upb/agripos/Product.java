@@ -32,4 +32,14 @@ public class Product {
     public void reduceStock(int qty) {
         this.stock -= qty;
     }
+
+    public void setPrice(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPrice'");
+    }
+
+    public void setStock(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setStock'");
+    }
 }
