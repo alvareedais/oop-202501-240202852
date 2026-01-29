@@ -1,16 +1,18 @@
-package main.java.com.upb.agripos.dao;
+package com.upb.agripos.dao;
 
-
+import com.upb.agripos.model.Product;
+import java.util.ArrayList;
 import java.util.List;
-import main.java.com.upb.agripos.model.Product;
 
-public interface ProductDAO {
-   
-    void insert(main.java.com.upb.agripos.Product product) throws Exception;
-    Product findByCode(String code) throws Exception;
-    List<Product> findAll() throws Exception;
-    void update(main.java.com.upb.agripos.Product p) throws Exception;
-    void delete(String code) throws Exception;
-    void insert(Product p) throws Exception;
-    void update(Product p) throws Exception;
+public class ProductDAO {
+
+    private final List<Product> data = new ArrayList<>();
+
+    public void insert(Product product) {
+        data.add(product); // nanti ganti INSERT SQL PostgreSQL
+    }
+
+    public List<Product> findAll() {
+        return data;
+    }
 }

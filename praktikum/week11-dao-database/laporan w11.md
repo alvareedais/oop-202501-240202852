@@ -1,6 +1,5 @@
-# Laporan Praktikum Week 11 – Data Access Object (DAO) dan CRUD Database
-
-Topik: Data Access Object (DAO) dan CRUD Database dengan JDBC
+# Laporan Praktikum Minggu 11
+Topik: Data Access Object (DAO) dan CRUD Database dengan JDBC (PostgreSQL)
 
 ## Identitas
 - Nama  : Alvirdaus Permathasyahidatama Abadi
@@ -10,226 +9,310 @@ Topik: Data Access Object (DAO) dan CRUD Database dengan JDBC
 ---
 
 ## Tujuan
-
-Mahasiswa mampu:
-1. Menjelaskan konsep Data Access Object (DAO) dalam pengembangan aplikasi OOP.
-2. Menghubungkan aplikasi Java dengan basis data menggunakan JDBC.
-3. Mengimplementasikan operasi CRUD (Create, Read, Update, Delete) secara lengkap.
-4. Mengintegrasikan DAO dengan class aplikasi OOP sesuai prinsip desain yang baik.
+- Mahasiswa mampu menjelaskan konsep Data Access Object (DAO) sebagai pola desain untuk memisahkan logika bisnis dari logika akses data.
+- Mahasiswa mampu menghubungkan aplikasi Java dengan basis data PostgreSQL menggunakan JDBC.
+- Mahasiswa mampu mengimplementasikan operasi CRUD (Create, Read, Update, Delete) secara lengkap menggunakan PreparedStatement.
+- Mahasiswa mampu mengintegrasikan DAO ke dalam aplikasi utama agar kode menjadi lebih rapi dan modular.
 
 ---
 
 ## Dasar Teori
-
-### 1. Data Access Object (DAO)
-DAO adalah pola desain yang memisahkan logika akses data dari logika bisnis aplikasi. Dengan DAO, perubahan teknologi basis data tidak memengaruhi logika utama aplikasi.
-
-### 2. JDBC (Java Database Connectivity)
-JDBC digunakan untuk menghubungkan aplikasi Java dengan basis data relasional. Komponen utamanya: DriverManager, Connection, PreparedStatement, dan ResultSet.
-
-### 3. PreparedStatement
-PreparedStatement digunakan untuk menghindari SQL Injection dan meningkatkan performa dengan parameter binding.
-
-### 4. CRUD Operations
-- **Create (Insert)**: Menambah data baru ke database
-- **Read (Select)**: Mengambil data dari database
-- **Update**: Memperbarui data yang sudah ada
-- **Delete**: Menghapus data dari database
-
-### 5. Enkapsulasi Database
-DAO menghilangkan akses langsung database dari main() atau UI, sehingga kode lebih terstruktur dan mudah dipelihara.
+- DAO (Data Access Object): Design pattern yang menyediakan antarmuka abstrak ke database. Tujuannya adalah memisahkan logika aplikasi dari detail teknis penyimpanan data, sehingga perubahan pada database tidak merusak logika bisnis.
+- JDBC (Java Database Connectivity): Standar API Java untuk menghubungkan aplikasi dengan database relasional.
+- PostgreSQL JDBC Driver: Komponen software (library) yang memungkinkan aplikasi Java berkomunikasi dengan server database PostgreSQL.
+- PreparedStatement: Objek JDBC yang digunakan untuk mengeksekusi query SQL yang sudah dikompilasi sebelumnya. Ini lebih aman dari serangan SQL Injection dibandingkan Statement biasa.
 
 ---
 
 ## Langkah Praktikum
-
-### 1. Setup Database
-- Buat database `agripos` di PostgreSQL
-- Jalankan script `sql/products.sql` untuk membuat tabel dan insert sample data:
-  ```sql
-  CREATE TABLE products (
-      code VARCHAR(10) PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      price DOUBLE PRECISION NOT NULL,
-      stock INT NOT NULL
-  );
-  ```
-
-### 2. Membuat Model Class (Product.java)
-- Package: `com.upb.agripos.model`
-- Atribut: code, name, price, stock
-- Constructor, getter, setter, dan toString()
-
-### 3. Membuat Interface DAO (ProductDAO.java)
-- Package: `com.upb.agripos.dao`
-- Method: insert(), findByCode(), findAll(), update(), delete()
-
-### 4. Implementasi DAO (ProductDAOImpl.java)
-- Package: `com.upb.agripos.dao`
-- Mengimplementasikan interface ProductDAO
-- Menggunakan PreparedStatement untuk semua query
-- Menangani connection management
-
-### 5. Membuat Class Aplikasi (MainDAOTest.java)
-- Package: `com.upb.agripos`
-- Melakukan test CRUD lengkap:
-  - Membuat koneksi database
-  - Insert 3 produk
-  - Menampilkan semua produk
-  - Find produk by code
-  - Update produk
-  - Delete produk
-  - Menampilkan data akhir
-
-### 6. File dan Direktori yang Dibuat
-```
-praktikum/week11-dao-database/
-├── src/main/java/com/upb/agripos/
-│   ├── model/Product.java
-│   ├── dao/ProductDAO.java
-│   ├── dao/ProductDAOImpl.java
-│   ├── MainDAOTest.java
-├── sql/products.sql
-├── screenshots/
-│   └── crud_result.png
-└── laporan.md
-```
-
-### 7. Commit Message
-```
-week11-dao-database: [fitur] Implementasi DAO dan CRUD Database dengan JDBC
-```
-
----
-
-## Hasil Implementasi
-
-### A. Struktur Program
-
-**Product.java** - Model dengan enkapsulasi
-- Menyimpan data produk (code, name, price, stock)
-- Menyediakan getter dan setter
-- Implementasi toString() untuk display
-
-**ProductDAO.java** - Interface untuk abstraksi akses data
-- Mendefinisikan contract untuk operasi CRUD
-- Memisahkan interface dari implementasi
-
-**ProductDAOImpl.java** - Implementasi akses data dengan JDBC
-- Menggunakan PreparedStatement untuk security dan performa
-- Mengimplementasikan semua method CRUD
-- Error handling dengan throws Exception
-
-**MainDAOTest.java** - Class aplikasi untuk testing
-- Membuat koneksi database melalui DriverManager
-- Inisialisasi ProductDAO
-- Testing semua operasi CRUD
-- Proper resource management dengan try-finally
-
-### B. Output Program
-
-Program menjalankan urutan operasi:
-
-1. **CREATE** - Insert 3 produk:
-   - P001: Pupuk Organik, Rp 25.000, stok 10
-   - P002: Pupuk NPK, Rp 35.000, stok 15
-   - P003: Benih Padi Premium, Rp 50.000, stok 20
-
-2. **READ ALL** - Menampilkan semua data produk
-
-3. **READ BY CODE** - Mencari produk dengan code P001
-
-4. **UPDATE** - Mengubah produk P001 menjadi "Pupuk Organik Premium", Rp 30.000, stok 8
-
-5. **DELETE** - Menghapus produk P003
-
-6. **FINAL READ** - Menampilkan data akhir (P001 dan P002)
-
----
-
-## Analisis & Kesimpulan
-
-### Keuntungan Menggunakan DAO
-
-1. **Separation of Concern**: Logika akses data terpisah dari logika bisnis
-2. **Maintainability**: Perubahan database tidak mempengaruhi kode aplikasi
-3. **Testability**: DAO mudah di-mock untuk unit testing
-4. **Reusability**: DAO dapat digunakan oleh banyak class berbeda
-5. **Security**: PreparedStatement mencegah SQL Injection
-
-### Prinsip OOP yang Diterapkan
-
-1. **Encapsulation**: Data produk dienkapsulasi dalam class Product
-2. **Abstraction**: Interface ProductDAO menyembunyikan detail implementasi
-3. **Polymorphism**: ProductDAOImpl mengimplementasikan interface ProductDAO
-4. **Interface Segregation**: Interface DAO hanya berisi method yang diperlukan
-
----
-
-## Kesulitan dan Solusi
-
-| Kesulitan | Solusi |
-|-----------|--------|
-| Koneksi database gagal | Pastikan PostgreSQL running, driver JDBC ditambahkan di classpath |
-| SQL Error | Gunakan PreparedStatement dan cek parameter order |
-| Resource leak | Gunakan try-with-resources atau finally block untuk close() |
-| Data duplikat saat insert | Gunakan code sebagai PRIMARY KEY |
-
----
-
-## Catatan Penting
-
-- ✓ Tidak ada SQL langsung di main()
-- ✓ DAO menangani semua akses database
-- ✓ CRUD berjalan lengkap
-- ✓ Error handling implementasi
-- ✓ Resource management proper
-- ✓ Code sesuai dengan dokumentasi chapter 11
-
----
-
-**Tanggal**: 18 Januari 2026  
-**Status**: Selesai
+- Menyiapkan database agripos dan tabel products menggunakan pgAdmin 4 (PostgreSQL) atau Query Tool.
+- Mengkonfigurasi file pom.xml untuk menambahkan dependency driver PostgreSQL (org.postgresql:postgresql) agar proyek mengenali database tersebut.
+- Membuat class Model Product yang merepresentasikan data tabel.
+- Membuat Interface ProductDAO yang mendefinisikan kontrak operasi CRUD (Insert, Find, Update, Delete).
+- Membuat class implementasi ProductDAOImpl yang berisi kode JDBC untuk mengeksekusi query SQL ke PostgreSQL.
+- Membuat class MainDAOTest yang melakukan koneksi ke database dan menguji seluruh operasi CRUD secara berurutan.
+- Melakukan commit ke repository dengan pesan: week11-dao: implementasi dao pattern dengan postgresql.
 
 ---
 
 ## Kode Program
-(Tuliskan kode utama yang dibuat, contoh:  
-
+ProductDAO.java
 ```java
-// Contoh
-Produk p1 = new Produk("BNH-001", "Benih Padi", 25000, 100);
-System.out.println(p1.getNama());
+package main.java.com.upb.agripos.dao;
+
+
+import java.util.List;
+import main.java.com.upb.agripos.model.Product;
+
+public interface ProductDAO {
+   
+    void insert(main.java.com.upb.agripos.Product product) throws Exception;
+    Product findByCode(String code) throws Exception;
+    List<Product> findAll() throws Exception;
+    void update(main.java.com.upb.agripos.Product p) throws Exception;
+    void delete(String code) throws Exception;
+    void insert(Product p) throws Exception;
+    void update(Product p) throws Exception;
+}
 ```
-)
+ProductDAOImpl.java
+```java
+package main.java.com.upb.agripos.dao;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import main.java.com.upb.agripos.model.Product;
+
+public class ProductDAOImpl implements ProductDAO {
+
+    private final Connection connection;
+
+    public ProductDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
+    @Override
+    public void insert(Product p) throws Exception {
+        String sql = "INSERT INTO products(code, name, price, stock) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, p.getCode());
+            ps.setString(2, p.getName());
+            ps.setDouble(3, p.getPrice());
+            ps.setInt(4, p.getStock());
+            ps.executeUpdate();
+        }
+    }
+
+    @Override
+    public Product findByCode(String code) throws Exception {
+        String sql = "SELECT * FROM products WHERE code = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, code);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Product(
+                        rs.getString("code"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getInt("stock")
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Product> findAll() throws Exception {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM products";
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                list.add(new Product(
+                    rs.getString("code"),
+                    rs.getString("name"),
+                    rs.getDouble("price"),
+                    rs.getInt("stock")
+                ));
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public void update(Product p) throws Exception {
+        String sql = "UPDATE products SET name=?, price=?, stock=? WHERE code=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, p.getName());
+            ps.setDouble(2, p.getPrice());
+            ps.setInt(3, p.getStock());
+            ps.setString(4, p.getCode());
+            ps.executeUpdate();
+        }
+    }
+
+    @Override
+    public void delete(String code) throws Exception {
+        String sql = "DELETE FROM products WHERE code=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, code);
+            ps.executeUpdate();
+        }
+    }
+
+    @Override
+    public void insert(main.java.com.upb.agripos.Product product) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void update(main.java.com.upb.agripos.Product p) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+}
+```
+Product.java
+```java
+package main.java.com.upb.agripos.model;
+
+public class Product {
+    private final String code; // Dijadikan final sesuai saran IDE
+    private String name;
+    private double price;
+    private int stock;
+
+    public Product(String code, String name, double price, int stock) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    public String getCode() { return code; }
+    public String getName() { return name; }
+    public double getPrice() { return price; }
+    public int getStock() { return stock; }
+
+    public void setName(String name) { this.name = name; }
+    public void setPrice(double price) { this.price = price; }
+    public void setStock(int stock) { this.stock = stock; }
+
+    @Override
+    public String toString() {
+        return String.format("| %-7s | %-25s | %-12.2f | %-7d |", 
+                             code, name, price, stock);
+    }
+}
+```
+MainDAOTest.java
+```java
+package main.java.com.upb.agripos;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.List;
+import main.java.com.upb.agripos.dao.ProductDAO;
+import main.java.com.upb.agripos.dao.ProductDAOImpl;
+import main.java.com.upb.agripos.model.Product;
+
+public class MainDAOTest {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, I am Alvirdaus Permathasyahidatama Abadi-240202852");
+        
+        String url = "jdbc:postgresql://localhost:5432/agripos";
+        String user = "postgres";
+        String password = "244442"; // sesuaikan jika beda
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            ProductDAO dao = new ProductDAOImpl(conn);
+
+            System.out.println("=== PERSIAPAN: Membersihkan Data Lama ===");
+            // Hapus semua data lama (opsional, untuk bersih-bersih)
+            List<Product> allProducts = dao.findAll();
+            for (Product p : allProducts) {
+                dao.delete(p.getCode());
+                System.out.println("Sukses menghapus produk kode: " + p.getCode());
+            }
+            if (!allProducts.isEmpty()) {
+                System.out.println("Data lama sudah dibersihkan (jika ada).");
+            } else {
+                System.out.println("Tidak ada data lama.");
+            }
+
+            System.out.println("\n=== TEST 1: Simpan Barang ===");
+            Product p1 = new Product("P001", "Semen Tiga Roda", 65000.0, 100);
+            Product p2 = new Product("P002", "Cat Tembok Putih", 120000.0, 50);
+            Product p3 = new Product("P003", "Paku Payung", 5000.0, 25);
+            Product p4 = new Product("P004", "Besi", 50000.0, 20);
+            Product p5 = new Product("P005", "Kuas", 5000.0, 50);
+
+            dao.insert(p1);
+            System.out.println("Sukses menyimpan: " + p1.getName());
+
+            dao.insert(p2);
+            System.out.println("Sukses menyimpan: " + p2.getName());
+
+            dao.insert(p3);
+            System.out.println("Sukses menyimpan: " + p3.getName());
+
+            dao.insert(p4);
+            System.out.println("Sukses menyimpan: " + p4.getName());
+
+            dao.insert(p5);
+            System.out.println("Sukses menyimpan: " + p5.getName());
+
+            System.out.println("\n=== TEST 2: Tampilkan Semua Barang ===");
+            List<Product> products = dao.findAll();
+            for (Product p : products) {
+                System.out.println(p); // akan otomatis panggil toString()
+            }
+
+            System.out.println("\n=== TEST 3: Update Barang (Stok Berkurang) ===");
+            Product updateP1 = dao.findByCode("P001");
+            if (updateP1 != null) {
+                updateP1.setStock(95); // stok berkurang
+                dao.update(updateP1);
+                System.out.println("Sukses update: " + updateP1.getName());
+                System.out.println("Data setelah update: " + updateP1);
+            }
+
+            System.out.println("\n=== TEST 4: Hapus Barang ===");
+            dao.delete("P003");
+            System.out.println("Sukses menghapus produk kode: P003");
+
+            System.out.println("\n=== TEST 5: Cari Barang Berdasarkan Kode ===");
+            Product found = dao.findByCode("P002");
+            if (found != null) {
+                System.out.println("Ditemukan: " + found);
+            } else {
+                System.out.println("Produk tidak ditemukan.");
+            }
+
+        } catch (Exception e) {
+            System.err.println("❌ Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
 ---
 
 ## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots/hasil.png)
-)
+
+
 ---
 
 ## Analisis
-(
-- Jelaskan bagaimana kode berjalan.  
-- Apa perbedaan pendekatan minggu ini dibanding minggu sebelumnya.  
-- Kendala yang dihadapi dan cara mengatasinya.  
-)
+---
+- Koneksi Database: Aplikasi berhasil terhubung ke PostgreSQL port 5432. Penggunaan driver org.postgresql di pom.xml sangat krusial agar Java mengenali protokol database ini.
+- Pemisahan Logika (DAO): Logika SQL tersimpan rapi di dalam ProductDAOImpl. Class utama (MainDAOTest) menjadi sangat bersih karena tidak ada kode SQL (INSERT INTO...) yang tercampur di sana. Main program hanya memanggil method seperti dao.insert() atau dao.findAll().
+- Keamanan Data: Penggunaan PreparedStatement (tanda tanya ?) pada kode DAO melindungi aplikasi dari error sintaks akibat karakter khusus (misal tanda kutip pada nama produk) dan mencegah SQL Injection.
+- Fleksibilitas: Jika suatu saat database ingin diganti kembali ke MySQL, kita cukup mengubah driver di pom.xml dan URL koneksi di Main, tanpa perlu merombak logika bisnis aplikasi secara keseluruhan.
 ---
 
 ## Kesimpulan
-(Tuliskan kesimpulan dari praktikum minggu ini.  
-Contoh: *Dengan menggunakan class dan object, program menjadi lebih terstruktur dan mudah dikembangkan.*)
+Penerapan DAO Pattern dengan database PostgreSQL memberikan arsitektur aplikasi yang kuat (robust). Data tersimpan permanen di database server yang handal, dan kode program tetap bersih, aman, serta mudah dikembangkan (maintainable) karena adanya pemisahan tanggung jawab yang jelas antara logika bisnis dan akses data.
 
 ---
 
 ## Quiz
-(1. [Tuliskan kembali pertanyaan 1 dari panduan]  
-   **Jawaban:** …  
+1. Apa fungsi pom.xml dalam praktikum ini?
+   **Jawaban:** Untuk mengatur konfigurasi proyek Maven, khususnya mengunduh library PostgreSQL JDBC Driver secara otomatis dari repositori pusat, sehingga kita tidak perlu mencari dan menambahkan file JAR secara manual.
 
-2. [Tuliskan kembali pertanyaan 2 dari panduan]  
-   **Jawaban:** …  
+2. Mengapa kita perlu menutup koneksi (conn.close() atau block try-with-resources)?  
+   **Jawaban:** Untuk membebaskan sumber daya (resource) di server database. Koneksi yang dibiarkan terbuka terus-menerus dapat menumpuk dan menyebabkan server database kehabisan slot koneksi (connection leak), yang akhirnya membuat aplikasi tidak bisa diakses.
 
-3. [Tuliskan kembali pertanyaan 3 dari panduan]  
-   **Jawaban:** …  )
+3. Apa perbedaan JDBC URL untuk MySQL dan PostgreSQL?
+   **Jawaban:** 
+   - MySQL: jdbc:mysql://localhost:3306/nama_db
+   - PostgreSQL: jdbc:postgresql://localhost:5432/nama_db (Perbedaan utama ada pada protokol sub-name postgresql vs mysql dan port default 5432 vs 3306).

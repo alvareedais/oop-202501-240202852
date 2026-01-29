@@ -29,5 +29,20 @@ public class Produk {
         System.out.println("Kode: " + kode + " | Nama: " + nama +
             " | Harga: Rp" + harga + " | Stok: " + stok);
     }
+
+    public String getKode() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getKode'");
+    }
+
+    public String getNama() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNama'");
+    }
+
+    public String getStok() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStok'");
+    }
     
 }

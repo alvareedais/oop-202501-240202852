@@ -1,0 +1,22 @@
+package com.upb.agripos.dao;
+
+import com.upb.agripos.model.Product;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDAO {
+
+    private final List<Product> data = new ArrayList<>();
+
+    public void insert(Product product) {
+        data.add(product);
+    }
+
+    public List<Product> findAll() {
+        return data;
+    }
+
+    public void delete(String code) {
+        data.removeIf(p -> p.getCode().equals(code));
+    }
+}

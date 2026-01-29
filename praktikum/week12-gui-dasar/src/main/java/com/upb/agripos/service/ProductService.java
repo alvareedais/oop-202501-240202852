@@ -1,21 +1,19 @@
-package main.java.com.upb.agripos.service;
+package com.upb.agripos.service;
 
-import main.java.com.upb.agripos.model.Product;
-import java.util.ArrayList;
+import com.upb.agripos.dao.ProductDAO;
+import com.upb.agripos.model.Product;
 import java.util.List;
 
 public class ProductService {
-    private List<Product> products;
 
-    public ProductService() {
-        this.products = new ArrayList<>();
-    }
+    private final ProductDAO dao = new ProductDAO();
 
     public void insert(Product product) {
-        products.add(product);
+        dao.insert(product);
     }
 
-    public List<Product> getAllProducts() {
-        return products;
+    public List<Product> getAll() {
+        return dao.findAll();
     }
+
 }

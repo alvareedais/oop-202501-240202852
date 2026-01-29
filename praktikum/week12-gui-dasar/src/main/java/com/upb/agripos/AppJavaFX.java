@@ -1,11 +1,23 @@
-package main.java.com.upb.agripos;
+package com.upb.agripos;
 
-
-import main.java.com.upb.agripos.view.ProductFormView;
+import com.upb.agripos.view.ProductFormView;
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class AppJavaFX {
+public class AppJavaFX extends Application {
+
+    @Override
+    public void start(Stage stage) {
+        ProductFormView view = new ProductFormView();
+
+        Scene scene = new Scene(view, 600, 400);
+        stage.setTitle("Agri-POS - GUI Dasar");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public static void main(String[] args) {
-        Application.launch(ProductFormView.class, args);
+        launch(args);
     }
 }
